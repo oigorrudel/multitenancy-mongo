@@ -5,5 +5,4 @@ import com.mongodb.client.MongoDatabase;
 public interface DataSourceStorage {
 
     MongoDatabase getCurrentDataBase();
-
 }

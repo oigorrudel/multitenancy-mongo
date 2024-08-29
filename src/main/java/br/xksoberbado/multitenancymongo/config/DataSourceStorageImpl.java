@@ -2,10 +2,10 @@ package br.xksoberbado.multitenancymongo.config;
 
 import br.xksoberbado.multitenancymongo.holder.TenantHolder;
 import com.mongodb.client.MongoDatabase;
+import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,23 +32,15 @@ public class DataSourceStorageImpl implements DataSourceStorage {
 
     private DataSourceConfiguration getMultiOne() {
         return DataSourceConfiguration.builder()
-                .alias("multi_one")
-                .host("localhost")
-                .port(27018)
-                .database("multi_one")
-                .username("root")
-                .password("12345")
-                .build();
+            .connectionString("mongodb://root:12345@localhost:27018/multi_one?authSource=admin&w=majority")
+            .database("multi_one")
+            .build();
     }
 
     private DataSourceConfiguration getMultiTwo() {
         return DataSourceConfiguration.builder()
-                .alias("multi_two")
-                .host("localhost")
-                .port(27019)
-                .database("multi_two")
-                .username("root")
-                .password("12345")
-                .build();
+            .connectionString("mongodb://root:12345@localhost:27019/multi_two?authSource=admin&w=majority")
+            .database("multi_two")
+            .build();
     }
 }
