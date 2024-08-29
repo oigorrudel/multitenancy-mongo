@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+  mongo-0:
+    image: mongo
+    container_name: multi_default
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 12345
+
+  mongo-1:
+    image: mongo
+    container_name: multi_one
+    ports:
+      - 27018:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 12345
+
+  mongo-2:
+    image: mongo
+    container_name: multi_two
+    ports:
+      - 27019:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 12345
